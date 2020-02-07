@@ -1,0 +1,20 @@
+---
+name: practical-03
+break: true
+indent: 4
+---
+
+src/main/java/practicalthree:
+    GatorTemp.java:
+        ConfirmFileExists
+        CountSingleLineComments --language Java --count 3
+        MatchFileFragment --fragment "{Your Name Here}" --count 0 --exact
+        MatchFileFragment --fragment "TODO" --count 0 --exact
+        MatchFileFragment --fragment "double" --count 2
+        MatchFileFragment --fragment "boolean " --count 1
+        MatchFileFragment --fragment ">=" --count 1 --exact
+        
+ExecuteCommand --command "gradle build"
+ExecuteCommand --command "gradle run -q --console plain run"
+MatchCommandFragment --command "gradle run -q --console plain run" --fragment "12.777777777777779C" --count 1 --exact
+MatchCommandFragment --command "gradle run -q --console plain run" --fragment "true" --count 1 --exact
